@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="notifier_function",  # Replace with your own username
-    version="0.9.0",
+    version="1.0.0",
     author="Enmanuel Magallanes Pinargote",
     author_email="fmagalla@fiec.espol.edu.ec",
     description="Notify you when a function end",
