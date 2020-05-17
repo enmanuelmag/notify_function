@@ -8,7 +8,7 @@
 
 __pycache__/
 
-/notifier_funtion.egg-info/
+notifier_function.egg-info
 
 tests.py
 
