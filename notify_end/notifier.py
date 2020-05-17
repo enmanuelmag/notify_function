@@ -48,13 +48,17 @@ def send_email(email, subject, text):
         subject: (str): status of the funtion
         text: (str): information of the funtion
     '''
-    response = requests.post(
-        "https://api.mailgun.net/v3/sandbox49eebe67a3eb430e94669e2220f4ef84.mailgun.org/messages",
-        auth=("api", "edecdc84528214a66397b7526b546501-3e51f8d2-02044987"),
-        data={"from": "Notifier Function Status <notifierfunction@gmail.com>",
-              "to": email,
-              "subject": "Hello! Your funtion has finished {}".format(subject),
-              "text": text})
+    try:
+        response = requests.post(
+            "https://api.mailgun.net/v3/sandbox49eebe67a3eb430e94669e2220f4ef84.mailgun.org/messages",
+            auth=("api", "edecdc84528214a66397b7526b546501-3e51f8d2-02044987"),
+            data={"from": "Notifier Function Status <notifierfunction@gmail.com>",
+                  "to": email,
+                  "subject": "Hello! Your funtion has finished {}".format(subject),
+                  "text": text})
+    except Exception as e:
+        logger.error('Failed to send email: \n' +
+                     str(e), exc_info=True)
 
 
 def notifer_decorator(title='Function finished',
