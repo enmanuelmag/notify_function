@@ -18,5 +18,10 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
+    install_requires=[
+        'playsound',
+        'notify2',
+        'dbus',
+    ],
     python_requires='>=3.6',
 )
