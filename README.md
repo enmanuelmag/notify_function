@@ -1,4 +1,4 @@
-# Notifier Funtion Status
+# Notifier Function Status
 This library use a decorator to show a toast in your screen and (optional) email to email that you specific
 
 ## Requeriments
@@ -12,7 +12,7 @@ All requeriments will be installed when install this module, but if something wa
 
 All that you need is use a decorator and specific some parameters, next explain it:
 
-Import: ```from notifier_funtion.notifier import notifer_decorator```
+Import: ```from notifier_function.notifier import notifer_decorator```
 
 Decorator to use: ```@notifer_decorator()```
 

@@ -5,7 +5,7 @@ from os import path
 from sys import platform
 from pynotifier import Notification
 
-# Catch any error of user funtion
+# Catch any error of user function
 logger = logging.Logger('catch_all')
 
 # Path of icon's
@@ -17,7 +17,7 @@ def set_icons():
     '''
     Set repecticly path os ico's to use, but actually when the NotificatioN Class
     is created show a message (5, 'LoadImage', 'Acceso denegado.') for this reason
-    this funtion doens't called
+    this function doens't called
 
     So, actually this behavior doesn't work. If you found a solution
     please create a pull requests to check it. Thanks!
@@ -40,13 +40,13 @@ def set_icons():
 
 def send_email(email, subject, text):
     '''
-    This funtion send a email with information of the fucntion
+    This function send a email with information of the fucntion
 
     Parameters:
     ---------
         email: (str): email address to send information
-        subject: (str): status of the funtion
-        text: (str): information of the funtion
+        subject: (str): status of the function
+        text: (str): information of the function
     '''
     try:
         response = requests.post(
@@ -54,7 +54,7 @@ def send_email(email, subject, text):
             auth=("api", "edecdc84528214a66397b7526b546501-3e51f8d2-02044987"),
             data={"from": "Notifier Function Status <notifierfunction@gmail.com>",
                   "to": email,
-                  "subject": "Hello! Your funtion has finished {}".format(subject),
+                  "subject": "Hello! Your function has finished {}".format(subject),
                   "text": text})
     except Exception as e:
         logger.error('Failed to send email: \n' +
