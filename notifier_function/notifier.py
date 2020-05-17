@@ -91,12 +91,13 @@ def notifer_decorator(title='Function finished',
 
             try:
                 result = original_function(*args, **kwargs)
-
+                title += ' - (success)'
                 subject = 'successfully'
                 result_email += str(result)
             except Exception as e:
 
                 ico_result = ERROR_ICO
+                title += ' - (error)'
                 subject = 'with a error'
                 result = str(e)
                 logger.error('Failed to do something: \n' +
