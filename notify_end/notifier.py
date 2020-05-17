@@ -1,5 +1,6 @@
-import logging
 import os
+import logging
+import requests
 from os import path
 from sys import platform
 from pynotifier import Notification
@@ -37,10 +38,30 @@ def set_icons():
     SUCCESS_ICO = os.path.abspath(SUCCESS_ICO)
 
 
+def send_email(email, subject, text):
+    '''
+    This funtion send a email with information of the fucntion
+
+    Params:
+    ---------
+        email: (str): email address to send information
+        subject: (str): status of the funtion
+        text: (str): information of the funtion
+    '''
+    response = requests.post(
+        "https://api.mailgun.net/v3/sandbox49eebe67a3eb430e94669e2220f4ef84.mailgun.org/messages",
+        auth=("api", "edecdc84528214a66397b7526b546501-3e51f8d2-02044987"),
+        data={"from": "Notifier Function Status <notifierfunction@gmail.com>",
+              "to": email,
+              "subject": "Hello! Your funtion has finished {}".format(subject),
+              "text": text})
+
+
 def notifer_decorator(title='Function finished',
                       msg='Your function has finished',
                       duration=10,
-                      urgency=Notification.URGENCY_NORMAL):
+                      urgency=Notification.URGENCY_NORMAL,
+                      email=''):
     '''
     This function recive some params to create the Notification and 
     show it when the user function finished
@@ -59,18 +80,30 @@ def notifer_decorator(title='Function finished',
 
         def wrapper_function(*args, **kwargs):
 
-            result = ''
+            result_email = 'Your function has finished. The return was this: \n'
             ico_result = SUCCESS_ICO
+
+            subject = ''
 
             try:
                 result = original_function(*args, **kwargs)
+
+                subject = 'successfully'
+                result_email += str(result)
             except Exception as e:
+
                 ico_result = ERROR_ICO
-                logger.error('Failed to do something: ' +
+                subject = 'with a error'
+                result = str(e)
+                logger.error('Failed to do something: \n' +
                              str(e), exc_info=True)
 
             notification = Notification(
                 title, msg, duration, urgency)
+
+            if email != '':
+                send_email(email, subject, result_email)
+
             notification.send()
 
             return result
