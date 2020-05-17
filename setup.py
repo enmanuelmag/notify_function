@@ -8,7 +8,7 @@ setuptools.setup(
     version="1.0.1",
     author="Enmanuel Magallanes Pinargote",
     author_email="fmagalla@fiec.espol.edu.ec",
-    description="Notify you when a function end",
+    description="Notify you when a function finished",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/enmanuel-mag/notifier_function",
