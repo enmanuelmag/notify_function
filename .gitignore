@@ -4,8 +4,12 @@
 
 /dist/
 
-notify_end/__pycache__/
+/notify_end/__pycache__/
+
+__pycache__/
 
 tests.py
+
+notifier.cpython-37
 
 notify_end/__pycache__/notifier.cpython-37.pyc
