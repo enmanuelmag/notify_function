@@ -11,7 +11,7 @@ setuptools.setup(
     description="Notify you when a function end",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
+    url="https://github.com/enmanuel-mag/notifier_function",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",

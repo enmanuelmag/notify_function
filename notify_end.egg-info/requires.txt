@@ -1,0 +1,3 @@
+requests
+pynotifier
+win10toast

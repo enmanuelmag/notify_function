@@ -3,14 +3,14 @@ This library use a decorator to show a toast in your screen and (optional) email
 
 ## Requeriments
 
-All requeriments will be installed when install this module, but if something was wrong this is the list (all this isntall by pip):
+All requeriments will be installed when install this module, but if something was wrong this is the list (all this install by pip):
 
-- win10toast
+- win10toast (only if you are using windows)
 - pynotifier
 
 ## Usage
 
-All that you need is use a decorator and specific some params, next explain it:
+All that you need is use a decorator and specific some parameters, next explain it:
 
 Decorator to use: ```@notifer_decorator()```
 
