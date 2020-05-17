@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="notifier_function",  # Replace with your own username
-    version="1.0.1",
+    version="1.0.5",
     author="Enmanuel Magallanes Pinargote",
     author_email="fmagalla@fiec.espol.edu.ec",
     description="Notify you when a function finished",
@@ -20,7 +20,7 @@ setuptools.setup(
     ],
     install_requires=[
         'requests',
-        'pynotifier',
+        'py-notifier',
         'win10toast'
     ],
     python_requires='>=3.6',
