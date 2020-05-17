@@ -88,23 +88,23 @@ def notifer_decorator(title='Function finished',
             ico_result = SUCCESS_ICO
 
             subject = ''
-
+            extra = ''
             try:
                 result = original_function(*args, **kwargs)
-                title += ' - (success)'
+                extra = ' - (success)'
                 subject = 'successfully'
                 result_email += str(result)
             except Exception as e:
 
                 ico_result = ERROR_ICO
-                title += ' - (error)'
+                extra = ' - (error)'
                 subject = 'with a error'
                 result = str(e)
                 logger.error('Failed to do something: \n' +
                              str(e), exc_info=True)
 
             notification = Notification(
-                title, msg, duration, urgency)
+                title+extra, msg, duration, urgency)
 
             if email != '':
                 send_email(email, subject, result_email)
