@@ -8,6 +8,8 @@
 
 __pycache__/
 
+/notifier_funtion.egg-info/
+
 tests.py
 
 notifier.cpython-37

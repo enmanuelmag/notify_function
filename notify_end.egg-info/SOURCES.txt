@@ -1,9 +1,0 @@
-README.md
-setpu.py
-notify_end/__init__.py
-notify_end/notifier.py
-notify_end.egg-info/PKG-INFO
-notify_end.egg-info/SOURCES.txt
-notify_end.egg-info/dependency_links.txt
-notify_end.egg-info/requires.txt
-notify_end.egg-info/top_level.txt

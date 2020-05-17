@@ -12,6 +12,8 @@ All requeriments will be installed when install this module, but if something wa
 
 All that you need is use a decorator and specific some parameters, next explain it:
 
+Import: ```from notify_end.notifier import notifer_decorator```
+
 Decorator to use: ```@notifer_decorator()```
 
 ### Parameters
