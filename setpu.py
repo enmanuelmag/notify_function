@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="notify_funtion",  # Replace with your own username
+    name="notifier_funtion",  # Replace with your own username
     version="0.5.0",
     author="Enmanuel Magallanes Pinargote",
     author_email="fmagalla@fiec.espol.edu.ec",
