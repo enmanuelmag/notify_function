@@ -4,7 +4,7 @@
 
 /dist/
 
-/notify_end/__pycache__/
+/notifier_function/__pycache__/
 
 __pycache__/
 
@@ -14,5 +14,5 @@ tests.py
 
 notifier.cpython-37
 
-notify_end/__pycache__/notifier.cpython-37.pyc
+notifier_function/__pycache__/notifier.cpython-37.pyc
 Step to update.txt
