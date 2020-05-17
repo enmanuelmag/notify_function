@@ -2,6 +2,8 @@
 
 /tests/
 
+/.vscode/
+
 /dist/
 
 /notifier_function/__pycache__/
