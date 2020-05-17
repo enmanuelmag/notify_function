@@ -42,7 +42,7 @@ def send_email(email, subject, text):
     '''
     This funtion send a email with information of the fucntion
 
-    Params:
+    Parameters:
     ---------
         email: (str): email address to send information
         subject: (str): status of the funtion
@@ -66,7 +66,7 @@ def notifer_decorator(title='Function finished',
     This function recive some params to create the Notification and 
     show it when the user function finished
 
-    Params:
+    Parameters:
     ------------
         title: (str): The title to use in the notification
         msg: (str): The message to usage in the notification

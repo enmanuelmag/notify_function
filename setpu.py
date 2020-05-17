@@ -19,9 +19,9 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     install_requires=[
-        'playsound',
-        'notify2',
-        'dbus',
+        'requests',
+        'pynotifier',
+        'win10toast'
     ],
     python_requires='>=3.6',
 )
