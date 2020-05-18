@@ -6,7 +6,7 @@ This library use a decorator to show a toast in your screen and (optional) email
 All requeriments will be installed when install this module, but if something was wrong this is the list (all this install by pip):
 
 - win10toast (only if you are using windows)
-- pynotifier
+- py-notifier
 
 ## Usage
 
@@ -22,6 +22,7 @@ Decorator to use: ```@notifer_decorator()```
 - **msg** is the message of toast notification, by default is: Your function has finished.
 - **duration** is the time, in seconds, that the nottications will show, by default is 8.
 - **return_info** add your return funtion to text in the email. By default is False. Is your data return isn't too big set True.
+- **api** your api key to send emails. Go to https://www.mailgun.com to get one.
 - **urgency** is the urgency of the notifcation. By defualt is URGENCY_NORMAL. The options are:
   - URGENCY_LOW.
   - URGENCY_NORMAL.
