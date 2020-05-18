@@ -38,7 +38,7 @@ def set_icons():
     SUCCESS_ICO = os.path.abspath(SUCCESS_ICO)
 
 
-def send_email(email, subject, text):
+def send_email(email, subject, text, api):
     '''
     This function send a email with information of the fucntion
 
@@ -51,7 +51,7 @@ def send_email(email, subject, text):
     try:
         response = requests.post(
             "https://api.mailgun.net/v3/sandbox49eebe67a3eb430e94669e2220f4ef84.mailgun.org/messages",
-            auth=("api", "edecdc84528214a66397b7526b546501-3e51f8d2-02044987"),
+            auth=("api", api),
             data={"from": "Notifier Function Status <notifierfunction@gmail.com>",
                   "to": email,
                   "subject": "Hello! Your function has finished {}".format(subject),
@@ -67,6 +67,7 @@ def notifer_decorator(title='Function finished',
                       result_info=False,
                       urgency=Notification.URGENCY_NORMAL,
                       email='',
+                      api=''
                       ):
     '''
     This function recive some params to create the Notification and 
@@ -80,6 +81,7 @@ def notifer_decorator(title='Function finished',
         result_info: (bool): add your return funtion to text in the email
         urgency : (str): the urgency of notification. Options:
         URGENCY_LOW | URGENCY_NORMAL | URGENCY_CRITICAL
+        api: (str): you api key of Mailgun
     '''
     # set_icons()
 
@@ -111,7 +113,11 @@ def notifer_decorator(title='Function finished',
                 title+extra, msg, duration, urgency)
 
             if email != '':
-                send_email(email, subject, result_email)
+                if api != '':
+                    send_email(email, subject, result_email, api)
+                else:
+                    print(
+                        'You must pass a api of Mailgun to sned emails. Check on https://www.mailgun.com')
 
             notification.send()
 
