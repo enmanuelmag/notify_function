@@ -6,7 +6,7 @@ This library use a decorator to show a toast in your screen and (optional) email
 All requeriments will be installed when install this module, but if something was wrong this is the list (all this install by pip):
 
 - win10toast (only if you are using windows)
-- pynotifier
+- py-notifier
 
 ## Usage
 
