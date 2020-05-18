@@ -1,5 +1,5 @@
 # Notifier Function Status
-This library use a decorator to show a toast in your screen and (optional) email to email that you specific
+This library use a decorator to show a toast in your screen.
 
 ## Requeriments
 
@@ -21,10 +21,7 @@ Decorator to use: ```@notifer_decorator()```
 - **title** is the title of toast notification, by defult is: Function finished.
 - **msg** is the message of toast notification, by default is: Your function has finished.
 - **duration** is the time, in seconds, that the nottications will show, by default is 8.
-- **return_info** add your return funtion to text in the email. By default is False. Is your data return isn't too big set True.
-- **api** your api key to send emails. Go to https://www.mailgun.com to get one.
 - **urgency** is the urgency of the notifcation. By defualt is URGENCY_NORMAL. The options are:
   - URGENCY_LOW.
   - URGENCY_NORMAL.
   - URGENCY_CRITICA.
-- **email** is the email that will recive the information. By defualt is empty string, that mean that don't will send any email.
