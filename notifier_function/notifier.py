@@ -63,9 +63,11 @@ def send_email(email, subject, text):
 
 def notifer_decorator(title='Function finished',
                       msg='Your function has finished',
-                      duration=10,
+                      duration=8,
+                      result_info=False,
                       urgency=Notification.URGENCY_NORMAL,
-                      email=''):
+                      email='',
+                      ):
     '''
     This function recive some params to create the Notification and 
     show it when the user function finished
@@ -75,6 +77,7 @@ def notifer_decorator(title='Function finished',
         title: (str): The title to use in the notification
         msg: (str): The message to usage in the notification
         duration: (int): time in seconds that notification will show
+        result_info: (bool): add your return funtion to text in the email
         urgency : (str): the urgency of notification. Options:
         URGENCY_LOW | URGENCY_NORMAL | URGENCY_CRITICAL
     '''
@@ -84,7 +87,7 @@ def notifer_decorator(title='Function finished',
 
         def wrapper_function(*args, **kwargs):
 
-            result_email = 'Your function has finished. The return was this: \n'
+            result_email = 'Your function has finished. {}'.format(msg)
             ico_result = SUCCESS_ICO
 
             subject = ''
@@ -93,7 +96,8 @@ def notifer_decorator(title='Function finished',
                 result = original_function(*args, **kwargs)
                 extra = ' - (success)'
                 subject = 'successfully'
-                result_email += str(result)
+                if result_info:
+                    result_email += str(result)
             except Exception as e:
 
                 ico_result = ERROR_ICO
