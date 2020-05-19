@@ -22,6 +22,6 @@ Decorator to use: ```@notifer_decorator()```
 - **msg** is the message of toast notification, by default is: Your function has finished.
 - **duration** is the time, in seconds, that the nottications will show, by default is 8.
 - **urgency** is the urgency of the notifcation. By defualt is URGENCY_NORMAL. The options are:
-  - URGENCY_LOW.
-  - URGENCY_NORMAL.
-  - URGENCY_CRITICA.
+  - low.
+  - normal.
+  - critial.
