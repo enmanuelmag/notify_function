@@ -82,7 +82,10 @@ def notifer_decorator(title='Function finished',
             notification = Notification(
                 extra + title, msg, duration, urgency)
 
-            notification.send()
+            try:
+                notification.send()
+            except Exception as e:
+                print("This module can't enqueue Notifications at the same time.")
 
             return result
 
