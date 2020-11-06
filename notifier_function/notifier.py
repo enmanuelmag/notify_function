@@ -29,11 +29,11 @@ def set_icons():
         os_platform = 'windows'
         format_img = '.ico'
 
-    ERROR_ICO = path.join('notify_end', 'assets',
+    ERROR_ICO = path.join('.', 'assets',
                           os_platform, 'error'+format_img)
     ERROR_ICO = os.path.abspath(ERROR_ICO)
 
-    SUCCESS_ICO = path.join('notify_end', 'assets',
+    SUCCESS_ICO = path.join('.', 'assets',
                             os_platform, 'success'+format_img)
     SUCCESS_ICO = os.path.abspath(SUCCESS_ICO)
 
@@ -85,7 +85,8 @@ def notifer_decorator(title='Function finished',
             try:
                 notification.send()
             except Exception as e:
-                print("This module can't enqueue Notifications at the same time.")
+                print(e)
+                #print("This module can't enqueue Notifications at the same time.")
 
             return result
 

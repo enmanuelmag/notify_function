@@ -3,10 +3,10 @@ This library use a decorator to show a toast in your screen.
 
 ## Requeriments
 
-All requeriments will be installed when install this module, but if something was wrong this is the list (all this install by pip):
+Please install this packages by yourself depending you OS:
 
-- win10toast (only if you are using windows)
-- py-notifier
+- Windows: ```pip3 install win10toast```
+- Ubuntu: ```apt-get install libnotify-bin``` (if don't work try searching how install notify-send for your distro of Linux)
 
 ## Usage
 
