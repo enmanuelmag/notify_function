@@ -21,7 +21,6 @@ setuptools.setup(
     install_requires=[
         'requests',
         'py-notifier',
-        'win10toast'
     ],
     python_requires='>=3.6',
 )
