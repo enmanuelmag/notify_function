@@ -63,13 +63,13 @@ def notify(
 
         def wrapper_function(*args, **kwargs):
             if urgency == 'low':
-                urgency = Notification.URGENCY_LOW
+                urgency2 = Notification.URGENCY_LOW
             elif urgency == 'normal':
-                urgency = Notification.URGENCY_NORMAL
+                urgency2 = Notification.URGENCY_NORMAL
             elif urgency == 'critial':
-                urgency = Notification.URGENCY_CRITICAL
+                urgency2 = Notification.URGENCY_CRITICAL
             else:
-                urgency = Notification.URGENCY_NORMAL
+                urgency2 = Notification.URGENCY_NORMAL
 
             ico_result = SUCCESS_ICO
             isException = -1
@@ -84,7 +84,7 @@ def notify(
                 isException = e
             
             notification = Notification(
-                extra + title, msg, duration, urgency)
+                extra + title, msg, duration, urgency2)
             
             try:
                 notification.send()
