@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="notifier_function",  # Replace with your own username
-    version="1.1.9",
+    version="1.3.0",
     author="Enmanuel Magallanes Pinargote",
     author_email="fmagalla@fiec.espol.edu.ec",
-    description="Notify you when a function finished",
+    description="Notify you when a function finished with option to send a email",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/enmanuel-mag/notifier_function",

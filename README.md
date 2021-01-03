@@ -12,16 +12,16 @@ Please install this packages by yourself depending you OS:
 
 All that you need is use a decorator and specific some parameters, next explain it:
 
-Import: ```from notifier_function.notifier import notifer_decorator```
+Import: `from notifier import notify`
 
-Decorator to use: ```@notifer_decorator()```
+Decorator to use: `@notify()`
 
 ### Parameters
 
-- **title** is the title of toast notification, by defult is: Function finished.
-- **msg** is the message of toast notification, by default is: Your function has finished.
-- **duration** is the time, in seconds, that the nottications will show, by default is 8.
-- **urgency** is the urgency of the notifcation. By defualt is URGENCY_NORMAL. The options are:
+- **title**: the title of toast notification, by defult is: Function finished.
+- **msg**: the message of toast notification, by default is: `Your function has finished`.
+- **duration**: the time, in seconds, that the nottications will show, by default is 8.
+- **urgency**: the urgency of the notifcation. By defualt is `normal`. The options are:
   - low.
   - normal.
   - critial.

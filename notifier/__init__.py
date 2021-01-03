@@ -1,6 +1,7 @@
 import os
 import logging
 import requests
+import datetime
 from os import path
 from sys import platform
 from pynotifier import Notification
@@ -13,7 +14,7 @@ ERROR_ICO = ''
 SUCCESS_ICO = ''
 
 
-def set_icons():
+def setIcons():
     '''
     Set repecticly path os ico's to use, but actually when the NotificatioN Class
     is created show a message (5, 'LoadImage', 'Acceso denegado.') for this reason
@@ -38,10 +39,12 @@ def set_icons():
     SUCCESS_ICO = os.path.abspath(SUCCESS_ICO)
 
 
-def notifer_decorator(title='Function finished',
-                      msg='Your function has finished',
-                      duration=7,
-                      urgency=Notification.URGENCY_NORMAL):
+def notify(
+    title='Function finished',
+    msg='Your function has finished',
+    duration=7,
+    email=-1,
+    urgency='normal'):
     '''
     This function recive some params to create the Notification and 
     show it when the user function finished
@@ -54,42 +57,54 @@ def notifer_decorator(title='Function finished',
 
         urgency : (str): the urgency of notification. Options:
         URGENCY_LOW | URGENCY_NORMAL | URGENCY_CRITICAL
-
     '''
-    # set_icons()
-
+    # setIcons()
     def wrapper_decorator(original_function):
 
         def wrapper_function(*args, **kwargs):
+            if urgency == 'low':
+                urgency = Notification.URGENCY_LOW
+            elif urgency == 'normal':
+                urgency = Notification.URGENCY_NORMAL
+            elif urgency == 'critial':
+                urgency = Notification.URGENCY_CRITICAL
+            else:
+                urgency = Notification.URGENCY_NORMAL
 
-            result_email = 'Your function has finished. {}'.format(msg)
             ico_result = SUCCESS_ICO
-
-            extra = ''
+            isException = -1
+            extra = -1
+            result = None
             try:
                 result = original_function(*args, **kwargs)
-                extra = ' SUCCESFULLY - '
-
+                extra = 'SUCCESFULLY - '
             except Exception as e:
-
                 ico_result = ERROR_ICO
                 extra = 'ERROR - '
-
-                result = str(e)
-                logger.error('Failed to do something: \n' +
-                             str(e), exc_info=True)
-
+                isException = e
+            
             notification = Notification(
                 extra + title, msg, duration, urgency)
-
+            
             try:
                 notification.send()
+                if email != -1:
+                    if isException == -1:
+                        subject = True 
+                    else:
+                        subject = False
+                    requests.post('https://sender-msg.herokuapp.com/email/', 
+                    json={
+                        "email": email,
+                        "subject": subject
+                    })
             except Exception as e:
-                print(e)
-                #print("This module can't enqueue Notifications at the same time.")
+                raise e
 
-            return result
+            if isException != -1:
+                raise isException
+            else:
+                return result
 
         return wrapper_function
-
     return wrapper_decorator

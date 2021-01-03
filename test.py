@@ -1,9 +1,8 @@
-from notifier_function.notifier import notifer_decorator as nd
+from notifier import notify
 
-
-@nd(duration=60)
+@notify(duration=60, email="emmanu1962@gmail.com")
 def test():
-    return True
-
+    return "TEST"
 
 test()
+# %%
