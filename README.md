@@ -12,9 +12,13 @@ Please install this packages by yourself depending you OS:
 
 All that you need is use a decorator and specific some parameters, next explain it:
 
-Import: `import notify`
+```python
+from notifier import notify
 
-Decorator to use: `@notify()`
+@notify(email='enmanuelmag@cardor.dev')
+def your_function():
+    print('Hello World!')
+```
 
 ### Parameters
 
