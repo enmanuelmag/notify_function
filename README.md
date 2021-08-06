@@ -1,5 +1,5 @@
 # Notifier Function Status
-This library uses a decorator to show a toast in your screen.
+This library uses a decorator to show a toast in your screen or send you a email when your function has finished
 
 ## Requeriments
 
