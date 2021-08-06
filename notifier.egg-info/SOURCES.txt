@@ -1,8 +1,0 @@
-README.md
-setup.py
-notifier/__init__.py
-notifier.egg-info/PKG-INFO
-notifier.egg-info/SOURCES.txt
-notifier.egg-info/dependency_links.txt
-notifier.egg-info/requires.txt
-notifier.egg-info/top_level.txt

@@ -1,6 +1,6 @@
 from notifier import notify
 
-@notify(duration=60, email="emmanu1962@gmail.com")
+@notify(duration=10)
 def test():
     return "TEST"
 
