@@ -1,16 +1,16 @@
 # Notifier Function Status
-This library use a decorator to show a toast in your screen.
+This library uses a decorator to show a toast in your screen.
 
 ## Requeriments
 
-Please install this packages by yourself depending you OS:
+Please install this packages by yourself depending on you OS:
 
 - Windows: ```pip3 install win10toast```
 - Ubuntu: ```apt-get install libnotify-bin``` (if don't work try searching how install notify-send for your distro of Linux)
 
 ## Usage
 
-All that you need is use a decorator and specific some parameters, next explain it:
+All that you need to do is use a decorator and some specific parameters, like in the following example:
 
 ```python
 from notifier import notify
