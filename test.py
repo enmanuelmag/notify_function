@@ -1,8 +1,7 @@
 from notifier import notify
 
-@notify(duration=10)
+@notify(webhook_url='link')
 def test():
-    return "TEST"
+    return 2
 
 test()
-# %%

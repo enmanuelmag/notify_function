@@ -1,9 +1,11 @@
-import os
-import logging
-import requests
-from os import path
-from sys import platform
+from discord_webhook import DiscordWebhook, DiscordEmbed
 from pynotifier import Notification
+from datetime import datetime
+from sys import platform
+from os import path
+import requests
+import logging
+import os
 
 # Catch any error of user function
 logger = logging.Logger('catch_all')
@@ -33,7 +35,7 @@ def setIcons():
     return SUCCESS_ICO, ERROR_ICO
 
 
-def notify(title='Function finished', msg='Your function has finished', duration=7, email=None, urgency='normal'):
+def notify(title='Function finished', msg='Your function has finished', duration=7, email=None, urgency='normal', webhook_url=None):
   '''
   This function recive some params to create the Notification and 
   show it when the user function finished
@@ -52,15 +54,18 @@ def notify(title='Function finished', msg='Your function has finished', duration
   def wrapper_decorator(original_function):
 
     def wrapper_function(*args, **kwargs):
-      ico_result = SUCCESS_ICO
-      isException = None
-      extra = None
       result = None
+      extra = None
+      isException = None
+      ico_result = SUCCESS_ICO
       
       try:
+        start = datetime.now()
         result = original_function(*args, **kwargs)
+        end = datetime.now()
         extra = 'SUCCESFULLY - '
       except Exception as e:
+        end = datetime.now()
         ico_result = ERROR_ICO
         extra = 'ERROR - '
         isException = e
@@ -74,12 +79,50 @@ def notify(title='Function finished', msg='Your function has finished', duration
           else:
             subject = False
           requests.post('https://sender-msg.herokuapp.com/email/', json={ "email": email, "subject": subject })
+        if webhook_url is not None:
+          discord = Discord(webhook_url)
+          discord.send_message(title=extra + title, description=result, error=isException, start=start, end=end)
       except Exception as e:
         raise e
-
       if isException is not None:
         raise isException
       else:
         return result
     return wrapper_function
   return wrapper_decorator
+
+
+class Discord(object):
+  def __init__(self, webhook_url):
+    self.webhook_url = webhook_url
+    self.webhook = DiscordWebhook(url=webhook_url)
+    self.error_img = 'https://raw.githubusercontent.com/enmanuel-mag/notify_function/master/notifier/assets/linux/error.png'
+    self.success_img = 'https://raw.githubusercontent.com/enmanuel-mag/notify_function/master/notifier/assets/linux/success.png'
+    self.logo = 'https://raw.githubusercontent.com/enmanuel-mag/notify_function/master/notifier/assets/logo.png'
+  def send_message(self, title='', description='', error=None, start=None, end=None):
+    color = '44AA00'
+
+    if error is not None:
+      color = 'BB250C'
+    delta = end - start
+    if description is not None and error is None:
+      description = f'Your function finished sucessfully with this result:\n```{description}```'
+    elif description is None and error is None:
+      description = 'Your function finished sucessfully with this result:\n```{}```'.format('None')
+    elif description is None and error is not None:
+      description = 'Your function finished with this error:\n```{}```'.format(error)
+
+    embed = DiscordEmbed(title=title, description=description, color=color)
+    #embed.set_image(url=img_msg)
+    #embed.set_thumbnail(url=img_msg)
+    #embed.set_footer(text='Notify function')
+    #embed.set_timestamp()
+
+    embed.add_embed_field(name='Start time', value=start.strftime('%H:%M:%S'))
+    embed.add_embed_field(name='End time', value=end.strftime('%H:%M:%S'))
+    embed.add_embed_field(name='Elapsed time', value=f'{delta}')
+
+    embed.set_author(name='Notify Function', url='https://github.com/enmanuel-mag', icon_url=self.logo)
+
+    self.webhook.add_embed(embed)
+    self.webhook.execute()
