@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="notify_function",
-    version="1.0.2",
+    version="1.0.3",
     author="Enmanuel Magallanes Pinargote",
     author_email="enmanuelmag@cardor.dev",
     description="Notify you when a function finished with option to send a email",
