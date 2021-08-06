@@ -8,7 +8,7 @@ setuptools.setup(
     version="1.1.0",
     author="Enmanuel Magallanes Pinargote",
     author_email="enmanuelmag@cardor.dev",
-    description="Notify you when a function finished with option to send a email",
+    description="Notify you when a function finished with option to send a email or message to discord channel",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/enmanuel-mag/notify_function",
