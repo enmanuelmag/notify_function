@@ -22,13 +22,13 @@ def your_function():
 
 ### Parameters
 
-- **title**: the title of toast notification, by defult is: Function finished.
-- **email**: the email of user, by defult is: None.
+- **title**: the title of toast notification, by defult is: `Function finished`.
+- **email**: the email of user, by defult is: `None`.
 - **msg**: the message of toast notification, by default is: `Your function has finished`.
-- **duration**: the time, in seconds, that the nottications will show, by default is 8.
+- **duration**: the time, in seconds, that the nottications will show, by default is `8`.
 - **urgency**: the urgency of the notifcation. By defualt is `normal`. The options are:
   - low.
   - normal.
-  - critial.
+  - critical.
 
 Made with ❤️ by [Enmanuel Magallanes](https://cardor.dev)
