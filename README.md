@@ -3,7 +3,7 @@ This library uses a decorator to show a toast in your screen or send you a email
 
 ## Requeriments
 
-Please install this packages by yourself depending on you OS:
+Please install this packages by yourself depending on your OS:
 
 - Windows: ```pip3 install win10toast```
 - Ubuntu: ```apt-get install libnotify-bin``` (if don't work try searching how install notify-send for your distro of Linux)
