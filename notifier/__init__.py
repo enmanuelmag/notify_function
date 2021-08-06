@@ -1,5 +1,6 @@
-from pynotifier import Notification
+from notifier.telegram_class import Telegram
 from notifier.discord_class import Discord
+from pynotifier import Notification
 from datetime import datetime
 from sys import platform
 from os import path
@@ -34,7 +35,10 @@ def setIcons():
     return SUCCESS_ICO, ERROR_ICO
 
 
-def notify(title='Function finished', msg='Your function has finished', duration=7, email=None, urgency='normal', webhook_url=None):
+def notify(
+  title='Function finished', msg='Your function has finished', duration=7, 
+  email=None, urgency='normal', webhook_url=None, api_token=None, chat_id=None
+):
   '''
   This function recive some params to create the Notification and 
   show it when the user function finished
@@ -83,6 +87,9 @@ def notify(title='Function finished', msg='Your function has finished', duration
         if webhook_url is not None:
           discord = Discord(webhook_url)
           discord.send_message(title=extra + title, description=result, error=isException, start=start, end=end)
+        if api_token is not None and chat_id is not None:
+          telegram = Telegram(api_token, chat_id)
+          telegram.send_message(title=extra + title, description=result, error=isException, start=start, end=end)
       except Exception as e:
         raise e
       if isException is not None:
