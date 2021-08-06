@@ -12,16 +12,19 @@ Please install this packages by yourself depending you OS:
 
 All that you need is use a decorator and specific some parameters, next explain it:
 
-Import: `from notifier import notify`
+Import: `import notify`
 
 Decorator to use: `@notify()`
 
 ### Parameters
 
 - **title**: the title of toast notification, by defult is: Function finished.
+- **email**: the email of user, by defult is: None.
 - **msg**: the message of toast notification, by default is: `Your function has finished`.
 - **duration**: the time, in seconds, that the nottications will show, by default is 8.
 - **urgency**: the urgency of the notifcation. By defualt is `normal`. The options are:
   - low.
   - normal.
   - critial.
+
+Made with ❤️ by [Enmanuel Magallanes](https://cardor.dev)

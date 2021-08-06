@@ -4,14 +4,14 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="notifier_function",  # Replace with your own username
-    version="1.5.1",
+    name="notify_function",
+    version="1.0.2",
     author="Enmanuel Magallanes Pinargote",
-    author_email="fmagalla@fiec.espol.edu.ec",
+    author_email="enmanuelmag@cardor.dev",
     description="Notify you when a function finished with option to send a email",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/enmanuel-mag/notifier_function",
+    url="https://github.com/enmanuel-mag/notify_function",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",

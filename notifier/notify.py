@@ -2,7 +2,6 @@ import os
 import logging
 import requests
 from os import path
-import numpy
 from sys import platform
 from pynotifier import Notification
 
