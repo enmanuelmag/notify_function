@@ -49,6 +49,8 @@ def notify(title='Function finished', msg='Your function has finished', duration
     duration: (int): time in seconds that notification will show
 
     urgency : (str): the urgency of notification. Options: low, normal and critical
+
+    webhook_url: (str): The url of the webhook to use, the notification will be send to the discord webhook
   '''
   SUCCESS_ICO, ERROR_ICO = setIcons()
   def wrapper_decorator(original_function):

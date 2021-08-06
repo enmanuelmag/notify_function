@@ -24,6 +24,7 @@ def your_function():
 
 - **title**: the title of toast notification, by defult is: `Function finished`.
 - **email**: the email of user, by defult is: `None`.
+- **webhook_url**: the url of webhook to send message to discord channel, by defult is: `None`.
 - **msg**: the message of toast notification, by default is: `Your function has finished`.
 - **duration**: the time, in seconds, that the nottications will show, by default is `8`.
 - **urgency**: the urgency of the notifcation. By defualt is `normal`. The options are:
