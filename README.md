@@ -25,7 +25,7 @@ def your_function():
 - **title**: the title of toast notification, by defult is: `Function finished`.
 - **email**: the email of user, by defult is: `None`.
 - **api_token**: the api token of your Telegram bot, by defult is: `None`. You could use [BotFather](https://t.me/botfather) to create a personal bot.
-- **chat_id**: the chat id to send the message, by defult is: `None`. If you account is public you could use your username (@usernamae), otherwise you could use the chat id, you'll find [here](https://t.me/username_to_id_bot).
+- **chat_id**: the chat id to send the message, by defult is: `None`. If you account is public you could use your username (@username), otherwise you could use the chat id, you'll find [here](https://t.me/username_to_id_bot).
 - **webhook_url**: the url of webhook to send message to discord channel, by defult is: `None`.
 - **msg**: the message of toast notification, by default is: `Your function has finished`.
 - **duration**: the time, in seconds, that the nottications will show, by default is `8`.
