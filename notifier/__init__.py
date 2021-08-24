@@ -54,6 +54,10 @@ def notify(
     urgency : (str): the urgency of notification. Options: low, normal and critical
 
     webhook_url: (str): The url of the webhook to use, the notification will be send to the discord webhook
+
+    api_token: (str): The token of the telegram bot to use, the notification will be send to the telegram bot
+
+    chat_id: (str): The chat id of the telegram bot to use, the notification will be send to the telegram bot
   '''
   SUCCESS_ICO, ERROR_ICO = setIcons()
   def wrapper_decorator(original_function):
@@ -98,3 +102,77 @@ def notify(
         return result
     return wrapper_function
   return wrapper_decorator
+
+class Notifier:
+  '''
+  This class is a wrapper to use the notify function
+  '''
+  def __init__(self, title='Manual notify', msg='Check your code', email=None, webhook_url=None, api_token=None, chat_id=None):
+    '''
+    This function is the constructor of the class, it recive some params to create the Notification and
+    show it when the user function finished
+
+    Parameters:
+    ------------
+      title: (str): The title to use in the notification
+
+      msg: (str): The message to usage in the notification
+
+      email: (str): The email to send the notification
+
+      webhook_url: (str): The url of the webhook to use, the notification will be send to the discord webhook
+
+      api_token: (str): The token of the telegram bot to use, the notification will be send to the telegram bot
+
+      chat_id: (str): The chat id of the telegram bot to use, the notification will be send to the telegram bot
+    '''
+    self.msg = msg
+    self.title = title
+    self.email = email
+    self.chat_id = chat_id
+    self.api_token = api_token
+    self.webhook_url = webhook_url
+
+  def __call__(self, title=None, msg=None, email=None, webhook_url=None, api_token=None, chat_id=None):
+    if title is not None:
+      self.title = title
+    if msg is not None:
+      self.msg = msg
+    if email is not None:
+      self.email = email
+    if webhook_url is not None:
+      self.webhook_url = webhook_url
+    if api_token is not None:
+      self.api_token = api_token
+    if chat_id is not None:
+      self.chat_id = chat_id
+    exceptions = []
+    try:
+      notification = Notification(title=self.title, description=self.msg)
+      notification.send()
+    except Exception as e:
+      exceptions.append(e)
+
+    try:   
+      if self.email is not None:
+        requests.post('https://sender-msg.herokuapp.com/email/', json={ "email": self.email, "subject": True })
+    except Exception as e:
+      exceptions.append(e)
+
+    try:
+      if self.webhook_url is not None:
+        discord = Discord(self.webhook_url)
+        discord.send_message(title=self.title, description=self.msg, error=None, start=None, end=None)
+    except Exception as e:
+      exceptions.append(e)
+    
+    try:
+      if self.api_token is not None and self.chat_id is not None:
+        telegram = Telegram(self.api_token, self.chat_id, manual_call=True)
+        telegram.send_message(title=self.title, description=self.msg, error=None, start=None, end=None)
+    except Exception as e:
+      exceptions.append(e)
+
+    if len(exceptions) > 0:
+      raise Exception(''.join([f'\n\n{e}' for e in exceptions]))
+    return True

@@ -1,13 +1,9 @@
-from notifier import notify
+from notifier import notify, Notifier
+import os
 
-""" @notify(webhook_url='https://discord.com/api/webhooks/796406472459288616/PAkiGGwqe0_PwtBxXYQvOzbk78B4RQP6VWRkvpBtw6Av0sc_mDa3saaIlwVPFjOIeIbt')
-def test():
-    return 2
+TG_ID = os.environ['TG_ID']
+TG_TOKEN = os.environ['TG_TOKEN']
+WEBHOOK_URL = os.environ['WEBHOOK_URL']
 
-test() """
-
-@notify(chat_id=293701727, api_token='1878628343:AAEFVRsqDz63ycmaLOFS7gvsG969wdAsJ0w')
-def test():
-    return 2 / 0
-
-test()
+notifier = Notifier(api_token=TG_TOKEN, chat_id=TG_ID, webhook_url=WEBHOOK_URL)
+notifier(msg='Test', title='Manual call')

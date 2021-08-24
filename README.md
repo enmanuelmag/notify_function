@@ -9,10 +9,13 @@ Please install this packages by yourself depending on your OS:
 - Ubuntu: ```apt-get install libnotify-bin``` (if don't work try searching how install notify-send for your distro of Linux)
 
 ## Usage
+There are to methods to use this library:
+
+### Decorator
 
 All that you need to do is use a decorator and some specific parameters, like in the following example:
 
-```python
+```python 
 from notifier import notify
 
 @notify(email='enmanuelmag@cardor.dev')
@@ -20,8 +23,7 @@ def your_function():
     print('Hello World!')
 ```
 
-### Parameters
-
+#### Parameters
 - **title**: the title of toast notification, by defult is: `Function finished`.
 - **email**: the email of user, by defult is: `None`.
 - **api_token**: the api token of your Telegram bot, by defult is: `None`. You could use [BotFather](https://t.me/botfather) to create a personal bot.
@@ -33,5 +35,27 @@ def your_function():
   - low.
   - normal.
   - critical.
+
+### Class (manual call)
+In this case you need to create a class and call the instance returned by the constructor, like in the following example:
+
+```python
+from notifier import Notifier
+
+notifier = Notifier()
+notifier()
+```
+
+#### Parameters
+This parameters are avaible in the class constructor and when you call the instance returned by the constructor.
+
+- **title**: the title of notification, by defult is: `Manual notify`.
+- **msg**: the message of notification, by default is: `Check your code`.
+- **email**: the email of user, by defult is: `None`.
+- **api_token**: the api token of your Telegram bot, by default is: `None`. You could use [BotFather](https://t.me/botfather) to create a personal bot.
+- **chat_id**: the chat id to send the message, by defult is: `None`. If you account is public you could use your username (@usernamae), otherwise you could use the chat id, you'll find [here](https://t.me/username_to_id_bot).
+- **webhook_url**: the url of webhook to send message to discord channel, by defult is: `None`.
+- **msg**: the message of toast notification, by default is: `Your function has finished`.
+
 
 Made with ❤️ by [Enmanuel Magallanes](https://cardor.dev)
