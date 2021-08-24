@@ -53,7 +53,7 @@ This parameters are avaible in the class constructor and when you call the insta
 - **msg**: the message of notification, by default is: `Check your code`.
 - **email**: the email of user, by defult is: `None`.
 - **api_token**: the api token of your Telegram bot, by default is: `None`. You could use [BotFather](https://t.me/botfather) to create a personal bot.
-- **chat_id**: the chat id to send the message, by defult is: `None`. If you account is public you could use your username (@usernamae), otherwise you could use the chat id, you'll find [here](https://t.me/username_to_id_bot).
+- **chat_id**: the chat id to send the message, by defult is: `None`. If you account is public you could use your username (@username), otherwise you could use the chat id, you'll find [here](https://t.me/username_to_id_bot).
 - **webhook_url**: the url of webhook to send message to discord channel, by defult is: `None`.
 
 
