@@ -83,7 +83,7 @@ def notify(
       try:
         notification.send()
         if email is not None:
-          if isException is not None:
+          if isException is None:
             subject = True 
           else:
             subject = False
