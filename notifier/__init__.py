@@ -79,9 +79,9 @@ def notify(
         extra = 'ERROR - '
         isException = e
 
-      notification = Notification(extra + title, msg, duration, urgency, ico_result)
+      #notification = Notification(extra + title, msg, duration, urgency, ico_result)
       try:
-        notification.send()
+        #notification.send()
         if email is not None:
           if isException is None:
             subject = True 
