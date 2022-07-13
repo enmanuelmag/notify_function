@@ -1,12 +1,5 @@
 # Notifier Function Status
-This library uses a decorator to show a toast in your screen or send you a email, message to discord channel or use a Telegram bot to send you a message when your function has finished.
-
-## Requeriments
-
-Please install this packages by yourself depending on your OS:
-
-- Windows: ```pip3 install win10toast```
-- Ubuntu: ```apt-get install libnotify-bin``` (if don't work try searching how install notify-send for your distro of Linux)
+This library uses a decorator to show a toast in your screen or send you a email, telegram message or message to discord channel or use a Telegram bot to send you a message when your function has finished.
 
 ## Usage
 There are to methods to use this library:
