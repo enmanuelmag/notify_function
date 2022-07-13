@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="notify_function",
-    version="1.4.0",
+    version="1.5.0",
     author="Enmanuel Magallanes Pinargote",
     author_email="enmanuelmag@cardor.dev",
     description="Notify you when a function finished with option to send a email or message to discord channel",
@@ -21,6 +21,7 @@ setuptools.setup(
     install_requires=[
         'requests',
         'py-notifier',
+        'discord_webhook'
     ],
     python_requires='>=3.6',
 )

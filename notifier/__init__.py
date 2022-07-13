@@ -1,25 +1,28 @@
-from notifier.telegram_class import Telegram
-from notifier.discord_class import Discord
-from pynotifier import Notification
-from datetime import datetime
-from sys import platform
-from os import path
-import requests
-import logging
 import os
+import logging
+import requests
+
+from os import path
+from sys import platform
+from datetime import datetime
+from pynotifier import Notification
+from notifier.discord_class import Discord
+from notifier.telegram_class import Telegram
 
 # Catch any error of user function
 logger = logging.Logger('catch_all')
 
+SENDER_EMAIL_URL = 'https://f6gc1xbvv2.execute-api.us-east-1.amazonaws.com/prod/email'
+
 def setIcons():
-    '''
+    """
     Set repecticly path os ico's to use, but actually when the NotificatioN Class
     is created show a message (5, 'LoadImage', 'Acceso denegado.') for this reason
     this function doens't called
 
     So, actually this behavior doesn't work. If you found a solution
     please create a pull requests to check it. Thanks!
-    '''
+    """
     if platform == "linux" or platform == "linux2" or platform == "darwin":
       os_platform = 'linux'
       format_img = '.png'
@@ -39,7 +42,7 @@ def notify(
   title='Function finished', msg='Your function has finished', duration=7, 
   email=None, urgency='normal', webhook_url=None, api_token=None, chat_id=None
 ):
-  '''
+  """
   This function recive some params to create the Notification and 
   show it when the user function finished
 
@@ -58,7 +61,7 @@ def notify(
     api_token: (str): The token of the telegram bot to use, the notification will be send to the telegram bot
 
     chat_id: (str): The chat id of the telegram bot to use, the notification will be send to the telegram bot
-  '''
+  """
   SUCCESS_ICO, ERROR_ICO = setIcons()
   def wrapper_decorator(original_function):
 
@@ -87,7 +90,7 @@ def notify(
             subject = True 
           else:
             subject = False
-          requests.post('https://sender-msg.herokuapp.com/email/', json={ "email": email, "subject": subject })
+          requests.post(SENDER_EMAIL_URL, json={ "email": email, "subject": subject })
         if webhook_url is not None:
           discord = Discord(webhook_url)
           discord.send_message(title=extra + title, description=result, error=isException, start=start, end=end)
@@ -104,11 +107,11 @@ def notify(
   return wrapper_decorator
 
 class Notifier:
-  '''
+  """
   This class is a wrapper to use the notify function
-  '''
+  """
   def __init__(self, title='Manual notify', msg='Check your code', email=None, webhook_url=None, api_token=None, chat_id=None):
-    '''
+    """
     This function is the constructor of the class, it recive some params to create the Notification and
     show it when the user function finished
 
@@ -125,7 +128,7 @@ class Notifier:
       api_token: (str): The token of the telegram bot to use, the notification will be send to the telegram bot
 
       chat_id: (str): The chat id of the telegram bot to use, the notification will be send to the telegram bot
-    '''
+    """
     self.msg = msg
     self.title = title
     self.email = email
@@ -155,7 +158,7 @@ class Notifier:
 
     try:   
       if self.email is not None:
-        requests.post('https://sender-msg.herokuapp.com/email/', json={ "email": self.email, "subject": True })
+        requests.post(SENDER_EMAIL_URL, json={ "email": self.email, "subject": True })
     except Exception as e:
       exceptions.append(e)
 
