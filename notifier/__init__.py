@@ -154,7 +154,8 @@ class Notifier:
       notification = Notification(title=self.title, description=self.msg)
       notification.send()
     except Exception as e:
-      exceptions.append(e)
+      pass
+      #exceptions.append(e)
 
     try:   
       if self.email is not None:
